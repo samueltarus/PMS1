@@ -14,7 +14,10 @@ class CreateTenantHousesTable extends Migration
     public function up()
     {
         Schema::create('tenant_houses', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('house_id');
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade')->onUpdate('cascade');
+
             $table->integer('passport');
             $table->string('username');
             $table->string('property_name');

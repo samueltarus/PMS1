@@ -110,8 +110,8 @@
 							<img class="rounded-circle" src="{{asset('backend/img/user.jpg')}}" width="24" >
 							<span class="status online"></span>
 						</span>
-                    <span>Admin</span>
-                    {{-- {{ Auth::user()->name }} --}}
+                    <span></span>
+                    {{ Auth::user()->email }}
                     </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="profile.html">My Profile</a>

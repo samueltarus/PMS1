@@ -17,7 +17,7 @@
                     <label>Property Name</label>
                     <select class="form-control select"  name="property_id" class="form-control" required >
                         @foreach ($houses as $houses)
-                        <option value="{{$houses->id}}">{{$houses->property_name}}</option>
+                         <option value="{{$houses->id}}">{{$houses->property_name}}</option>
                         @endforeach
                     </select>
 

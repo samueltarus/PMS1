@@ -45,9 +45,6 @@ class HouseController extends Controller
         $data['unit_type'] = $request->unit_type;
         $data['status']=$request->status;
 
-
-
-
      //    $data['publication_status']=$request->publication_status;
 
         $image=$request->file('avatar');
@@ -94,7 +91,7 @@ class HouseController extends Controller
 
         $data =array();
         $data['property_name']=$request->property_name;
-        $data['unit_name']=$request->unit_name;
+        $data['house_id']=$request->house_id;
         $data['unit_type'] = $request->unit_type;
         $data['status']=$request->status;
 
@@ -168,13 +165,19 @@ class HouseController extends Controller
 
     public function assign_houses(){
 
-        $property_name =DB::table('properties')->select( 'id','property_name')->get();
+        $property_name =DB::table('houses')->distinct('property_name')
+        ->join('properties', 'houses.property_id',  '=', 'properties.id')
+        ->select( 'houses.id','property_name')->where('houses.status',0)->get();
+
+        //  $property_name =DB::table('properties')->select( 'id','property_name')->get();
         $passport =DB::table('tenants')->select( 'id','passport')->get();
 
         return view ('admin.assign_house',compact('property_name','passport'));
 
     }
-    public function save_tenant_houses(Request $request ){
+
+
+    public function save_tenant_houses(Request $request  ){
         $data =array();
 
         $data['passport']=$request->passport;
@@ -183,16 +186,11 @@ class HouseController extends Controller
         $data['unit_name']=$request->unit_name;
         $data['monthly_rent']=$request->monthly_rent;
 
-        $id =House::select('id')->where('id')->get();
+             DB::table('tenant_houses')->join('houses', 'houses.property_id',  '=', 'properties.id')
+             ->where('houses.status',0)->insert($data);
 
-        DB::transaction(function() use ($data,$id)
-            {
-                DB::table('houses')->update(['status' => 1]);
-
-                DB::table('tenant_houses')->insert($data);
-
-            });
-
+             DB::table('houses')->where('id',$request)
+             ->update(['status'=>0]);
             return Redirect::to('all-houses');
 
 

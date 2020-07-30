@@ -13,6 +13,29 @@
 
             @csrf
             <div class="form-group">
+
+                <div class="form-group">
+                    <label>Property Name</label>
+                    {{-- <input class="form-control" type="text"  name="property_name"> --}}
+                    <select name="property_name" class="property_name" id="property_name" class="form-control " value="property_name">
+
+                        @foreach ($property_name as $property_name)
+
+                         <option value="{{$property_name->id}} "> {{$property_name->property_name}}     </option>
+
+                        @endforeach
+
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label>Unit Name</label>
+                    <select name="unit_name"   class="unit_name" id="unit_name" class="form-control"  value="unit_name">
+
+                        <option value="0" disabled="true" selected="true">Select House Number</option>
+
+                     </select>
+                </div>
                 <label>Tenant National ID/Passwoprt</label>
                 {{-- <input class="form-control" type="text"  name="passport"> --}}
                 <select name="passport" class="passport" id="passport" class="form-control " value="passport">
@@ -37,28 +60,6 @@
 
             </div>
 
-                <div class="form-group">
-                    <label>Property Name</label>
-                    {{-- <input class="form-control" type="text"  name="property_name"> --}}
-                    <select name="property_name" class="property_name" id="property_name" class="form-control " value="property_name">
-
-                        @foreach ($property_name as $property_name)
-
-                         <option value="{{$property_name->id}} "> {{$property_name->property_name}}     </option>
-
-                        @endforeach
-
-                    </select>
-
-                </div>
-                <div class="form-group">
-                    <label>Unit Name</label>
-                    <select name="unit_name"   class="unit_name" id="unit_name" class="form-control"  value="unit_name">
-
-                        <option value="0" disabled="true" selected="true">Select House Number</option>
-
-                     </select>
-                </div>
 
                     <div class="form-group">
                         <label> Monthly Rent Amount <span class="text-danger">*</span></label>
@@ -76,50 +77,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <script type="text/javascript">
 
-
-      $(document).ready(function(){
-
-        $(document).on('change','.property_name',function(){
-
-          var id=$(this).val();
-
-          var div=$(this).parents();
-
-          var op= "";
-
-           $.ajax({
-            type:'get',
-            url:'{!!URL::to('find-unit-name')!!}',
-            data:{'id':id},
-
-            success:function(data){
-
-              op+='<option value ="0" selected disabled><Chose Property </option>';
-                 for(var i=0; i<data.length;i++){
-                op+='<option value="'+data[i].id+'">'+data[i].unit_name+'</option>';
-                console.log(op);
-                 }
-
-              div.find('.unit_name').html(" ");
-              div.find('.unit_name').append(op);
-            },
-
-            error:function(){
-
-            }
-          });
-        });
-
-
-      });
-
-
-
-
-
-  </script>
 
 <script type="text/javascript">
 
@@ -134,7 +92,7 @@
           data:{'id':id},
           success:function(data){
 
-             op+='<option value ="0" selected disabled><Chose Property </option>';
+            //  op+='<option value ="0" selected disabled><Chose Property </option>';
                for(var i=0; i<data.length;i++){
               op+='<option value="'+data[i].id+'">'+data[i].username+'</option>';
               console.log(op);
@@ -142,6 +100,36 @@
 
             div.find('.username').html(" ");
             div.find('.username').append(op);
+          },
+
+          error:function(){
+          }
+        });
+      });
+
+    });
+
+
+
+    $(document).ready(function(){
+      $(document).on('change','.property_name',function(){
+        var id=$(this).val();
+        var div=$(this).parents();
+        var op= "";
+         $.ajax({
+          type:'get',
+          url:'{!!URL::to('find-unit-name')!!}',
+          data:{'id':id},
+          success:function(data){
+
+            //  op+='<option value ="0" selected disabled><Chose Property </option>';
+               for(var i=0; i<data.length;i++){
+              op+='<option value="'+data[i].id+'">'+data[i].unit_name+'</option>';
+              console.log(op);
+               }
+
+            div.find('.unit_name').html(" ");
+            div.find('.unit_name').append(op);
           },
 
           error:function(){

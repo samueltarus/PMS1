@@ -16,7 +16,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>First Name <span class="text-danger">*</span></label>
-                            <input  name="first_name" class="form-control" type="text" value="{{ $tenant-}}" required autocomplete="first_name" autofocus>
+                            <input  name="first_name" class="form-control" type="text" value="{{ $tenant->first_name}}" required autocomplete="first_name" autofocus>
                         </div>
                     </div>
                     <div class="col-sm-6">
