@@ -165,8 +165,8 @@ class HouseController extends Controller
 
     public function assign_houses(){
 
-        $property_name =DB::table('houses')->distinct('property_name')
-        ->join('properties', 'houses.property_id',  '=', 'properties.id')
+        $property_name =DB::table('properties')->distinct('property_name')
+        ->join('houses', 'houses.property_id',  '=', 'properties.id')
         ->select( 'houses.id','property_name')->where('houses.status',0)->get();
 
         //  $property_name =DB::table('properties')->select( 'id','property_name')->get();
@@ -183,14 +183,18 @@ class HouseController extends Controller
         $data['passport']=$request->passport;
         $data['username']=$request->username;
         $data['property_name']=$request->property_name;
-        $data['unit_name']=$request->unit_name;
+        $data['house_id']=$request->house_id;
+        $data['house_deposit']=$request->house_deposit;
         $data['monthly_rent']=$request->monthly_rent;
+
 
              DB::table('tenant_houses')->join('houses', 'houses.property_id',  '=', 'properties.id')
              ->where('houses.status',0)->insert($data);
 
-             DB::table('houses')->where('id',$request)
-             ->update(['status'=>0]);
+             DB::table('tenant_houses')
+             ->join('houses', 'tenant_houses.house_id', '=', 'houses.id')
+             ->update(['status'=>1]);
+
             return Redirect::to('all-houses');
 
 
@@ -224,7 +228,7 @@ class HouseController extends Controller
 
         $Houses= DB::table('houses')
                         ->where('id',$id)
-                        ->update(['status'=>1]);
+                        ->update(['status'=>0]);
 
         return Redirect::to('all-houses');
 
@@ -233,7 +237,7 @@ class HouseController extends Controller
 
         $Houses= DB::table('houses')
                         ->where('id',$id)
-                        ->update(['status'=>0]);
+                        ->update(['status'=>1]);
 
         return Redirect::to('all-houses');
 

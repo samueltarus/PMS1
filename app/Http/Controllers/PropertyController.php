@@ -33,6 +33,9 @@ class PropertyController extends Controller
         $data =array();
         $data['landlord_id']=$request->landlord_id;
         $data['property_name']=$request->property_name;
+        $data['property_manager']=$request->property_manager;
+        $data['property_number']=$request->property_number;
+
         $data['property_type']=$request->property_type;
         $data['property_description'] = $request->property_description;
         $data['number_of_units']=$request->number_of_units;

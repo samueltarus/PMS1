@@ -34,8 +34,21 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
+                            <label>Property Manager <span class="text-danger">*</span></label>
+                            <input  name="property_manager" class="form-control" type="text" value="{{ old('property_manager') }}" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Apartment Registration Number/Plot Number <span class="text-danger">*</span></label>
+                            <input  name="property_number" class="form-control" type="text" value="{{ old('property_number') }}" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
                             <label>Property Type</label>
                             <select class="form-control select" name="property_type">
+                                <option> Hotel and Lodge</option>
                                 <option>Retirement</option>
                                 <option>Apartments</option>
                                 <option>Flats</option>

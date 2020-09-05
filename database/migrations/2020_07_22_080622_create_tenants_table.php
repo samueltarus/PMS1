@@ -23,7 +23,7 @@ class CreateTenantsTable extends Migration
             $table->string('passport');
             $table->string('email');
             $table->string('occupation');
-            $table->integer('age');
+            $table->date('date_of_birth');
             $table->string('address');
             $table->string('county');
             $table->string('constituency');

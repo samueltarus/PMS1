@@ -64,6 +64,9 @@ Route::get('edit-house/{id}','HouseController@edit_house');
 Route::post('update-house/{id}','HouseController@update_house');
 Route::get('delete-house/{id}','HouseController@delete_house');
 
+Route::get('active-house/{id}','HouseController@active_house');
+Route::get('unactive-house/{id}','HouseController@unactive_house');
+
 Route::get('all-occupied','HouseController@all_occupied_houses');
 Route::get('all-vacant','HouseController@all_vacant_houses');
 Route::get('assign-house','HouseController@assign_houses');
@@ -71,5 +74,12 @@ Route::post('save-tenant-house','HouseController@save_tenant_houses');
 
 Route::get('find-unit-name','HouseController@find_unit_name');
 Route::get('find-tenant','HouseController@find_tenant');
+
+
+// invoice
+ Route::get('all-invoices','InvoiceController@all_invoices');
+ Route::get('add-invoice','InvoiceController@add_invoice');
+ Route::get('edit-invoice','InvoiceController@edit_invoice');
+ Route::get('view-invoice','InvoiceController@view_invoice');
 
 });

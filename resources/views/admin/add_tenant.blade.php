@@ -54,8 +54,8 @@
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Age <span class="text-danger">*</span></label>
-                            <input class="form-control" type="number" name="age">
+                            <label>Date Of Birth <span class="text-danger">*</span></label>
+                            <input class="form-control" type="date" name="date_of_birth">
                         </div>
                     </div>
 

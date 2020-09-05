@@ -23,10 +23,13 @@
 
                 </div>
                 <div class="form-group">
-                    <label>Unit Name</label>
+                    <label>Room Code</label>
                     <input class="form-control" type="text"  name="unit_name">
                 </div>
-
+                <div class="form-group">
+                    <label>Meter Number</label>
+                    <input class="form-control" type="text"  name="meter_number">
+                </div>
                 <div class="form-group">
                     <label>Unit Type</label>
                     <select class="form-control select" name="unit_type">

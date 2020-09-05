@@ -18,6 +18,7 @@ class CreateHousesTable extends Migration
             $table->unsignedBigInteger('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade')->onUpdate('cascade');
             $table->string('unit_name');
+            $table->string('meter_number');
             $table->string('unit_type');
             $table->integer('status');
             $table->string('avatar');

@@ -9,7 +9,7 @@ class Tenant extends Model
 
     protected $fillable = [
         'first_name', 'last_name', 'username','passport','email',
-      'occupation','age', 'address','county', 'town', 'phone_number','avatar','status',
+      'occupation','date_of_birth', 'address','county', 'town', 'phone_number','avatar','status',
     ];
 
     public function house(){

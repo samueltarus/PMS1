@@ -51,7 +51,7 @@
                     <thead>
                         <tr>
                             <th style="min-width:200px;">Names</th>
-                            <th>Landlord ID</th>
+                            <th>Landlord Passport/ID</th>
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>County</th>

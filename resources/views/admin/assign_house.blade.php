@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label>Property Name</label>
                     {{-- <input class="form-control" type="text"  name="property_name"> --}}
-                    <select name="property_name" class="property_name" id="property_name" class="form-control " value="property_name">
+                    <select name="property_name" class="property_name" id="property_name" class="form-control " value="property_name" required>
 
                         @foreach ($property_name as $property_name)
 
@@ -29,8 +29,8 @@
 
                 </div>
                 <div class="form-group">
-                    <label>Unit Name</label>
-                    <select name="unit_name"   class="unit_name" id="unit_name" class="form-control"  value="unit_name">
+                    <label>Room Code</label>
+                    <select name="house_id" class="unit_name" class="form-control" id="unit_name" class="form-control"  value="house_id" required>
 
                         <option value="0" disabled="true" selected="true">Select House Number</option>
 
@@ -38,7 +38,7 @@
                 </div>
                 <label>Tenant National ID/Passwoprt</label>
                 {{-- <input class="form-control" type="text"  name="passport"> --}}
-                <select name="passport" class="passport" id="passport" class="form-control " value="passport">
+                <select name="passport" class="passport" id="passport" class="form-control " value="passport" required>
 
                     @foreach ($passport as $passport)
 
@@ -52,20 +52,28 @@
             <div class="form-group">
                 <label>Tenant Names</label>
 
-                <select name="username"   class="username" id="username" class="form-control"  value="username">
+                <select name="username"   class="username" id="username" class="form-control"  value="username" required>
 
                     <option value="0" disabled="true" selected="true">Tenant User Names</option>
 
                  </select>
 
             </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Placement Date <span class="text-danger">*</span></label>
+                    <input class="form-control" type="date" name="placement_date">
+                </div>
+            </div>
 
-
-                    <div class="form-group">
-                        <label> Monthly Rent Amount <span class="text-danger">*</span></label>
-                        <input class="form-control" type="number" name="monthly_rent">
-                    </div>
-
+       <div class="form-group">
+        <label> Deposit Amount <span class="text-danger">*</span></label>
+             <input class="form-control" type="number" name="house_deposit" required>
+        </div>
+       <div class="form-group">
+        <label> Monthly Rent Amount <span class="text-danger">*</span></label>
+             <input class="form-control" type="number" name="monthly_rent" required>
+        </div>
 
                 <div class="m-t-20 text-center">
                     <button class="btn btn-primary submit-btn">Create House</button>
@@ -92,7 +100,7 @@
           data:{'id':id},
           success:function(data){
 
-            //  op+='<option value ="0" selected disabled><Chose Property </option>';
+            //   op+='<option value ="0" selected disabled><Chose Property </option>';
                for(var i=0; i<data.length;i++){
               op+='<option value="'+data[i].id+'">'+data[i].username+'</option>';
               console.log(op);
@@ -122,7 +130,7 @@
           data:{'id':id},
           success:function(data){
 
-            //  op+='<option value ="0" selected disabled><Chose Property </option>';
+              op+='<option value ="0" selected disabled><Chose Property </option>';
                for(var i=0; i<data.length;i++){
               op+='<option value="'+data[i].id+'">'+data[i].unit_name+'</option>';
               console.log(op);

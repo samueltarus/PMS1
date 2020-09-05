@@ -18,7 +18,7 @@
                     <tr>
                         <th>House Id</th>
                         <th>Property Name</th>
-                        <th>Unit Name</th>
+                        <th>Room Code</th>
                         <th>Unit Type</th>
                         <th>Status</th>
                         <th class="text-right">Action</th>
@@ -33,17 +33,17 @@
                         <td>{{$houses->unit_name}}</td>
                         <td>{{$houses->unit_type}}</td>
                         <td>
-                            @if ($houses->status==0)
-                            <a class="btn btn-danger" href="{{URL::to('/unactive_house/'.$houses->id)}}">Vacant
+                            @if ($houses->status==1)
+                            <a class="btn btn-danger" href="{{URL::to('/unactive-house/'.$houses->id)}}">Vacant House
                                     <i class="fas fa-thumbs-down"></i>
                                 </a>
                                 @else
-                                <a class="btn btn-success" href="{{URL::to('/active_house/'.$houses->id)}}">Occupied
+                                {{-- <a class="btn btn-success" href="{{URL::to('/unactive-house/'.$houses->id)}}">Vacate House
                                     <i class="fas fa-thumbs-up"></i>
-                                </a>
+                                </a> --}}
                                 @endif
                         </td>
-                        <td class="text-right">
+                        {{-- <td class="text-right">
                             <div class="dropdown dropdown-action">
                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -51,7 +51,7 @@
                                 <a class="dropdown-item" href="{{ url('/delete-house/'.$houses->id)}}" ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                 </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
 
                     @endforeach

@@ -9,7 +9,7 @@ class House extends Model
 {
 
     protected $fillable = [
-        'property_id', 'unit_name', 'unit_type','status','avatar',
+        'property_id', 'unit_name','meter_number', 'unit_type','status','avatar',
 
     ];
 
